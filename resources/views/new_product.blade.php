@@ -4,7 +4,7 @@
 <h1>Crear Productos</h1>
 <div class="card">
     <div class="card-body">
-        <form id="filterForm" method="post" action={{ action('ProductController@save') }} enctype="multipart/form-data">
+        <form id="filterForm" method="post" action={{ route('saveProduct') }} enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="name">Name</label>

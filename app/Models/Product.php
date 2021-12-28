@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Product extends Model
 {
     use  HasFactory;
+    //protected $with = ['category'];
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     public function scopePriceMin($query, $input)
     {
         return $query->where('price', '>', $input);

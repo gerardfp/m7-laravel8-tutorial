@@ -29,7 +29,7 @@ Route::post('/products/addToChart', [ProductController::class, 'addToChart'])->n
 Route::get('/products/new', [ProductController::class, 'new']);
 
 //Para el formulario. definimos la accion de save cuando se envia el formulario
-Route::post('/products/new', [ProductController::class, 'save']);
+Route::post('/products/new', [ProductController::class, 'save'])->name('saveProduct');
 
 //Route::get('/axios', [ProductController::class, 'list']);
 Auth::routes();

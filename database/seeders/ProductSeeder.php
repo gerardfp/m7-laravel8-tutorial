@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Category;
+use App\Models\Product;
 
-class CategorySeeder extends Seeder
+class ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::factory(3)->hasProducts(2)->create();
+        Product::factory(1)->create();
+
     }
 }

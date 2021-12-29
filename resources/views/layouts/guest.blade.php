@@ -12,12 +12,12 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/tail.css') }}">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        @include('layouts.app_navigation')
         <div class="font-sans text-gray-900 antialiased container">
             {{ $slot }}
         </div>

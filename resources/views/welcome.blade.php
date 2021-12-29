@@ -1,18 +1,13 @@
-@extends('layouts.app')
-
-@section('content')
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel Demo
-                </div>
-
-                <div class="links">
-                    <a href={{ route('productList') }}>Products Filter</a>
-                    <a href="{{ url('/products/?axios=true') }}">Fiter Axios</a>
-                    <a href="{{ url('/products/new') }}">New Product</a>
-                </div>
-            </div>
+<x-app-layout>
+    <div class="content">
+        <div class="title m-b-md">
+            Laravel Demo
         </div>
-    </body>
-</html>
-@endsection
+
+        <div class="links">
+            <a href={{ route('productList') }}>Products Filter</a>
+            <a href="{{ url('/products/?axios=true') }}">Fiter Axios</a>
+            <a href="{{ url('/products/new') }}">New Product</a>
+        </div>
+    </div>
+</x-app-layout>

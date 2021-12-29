@@ -19,7 +19,6 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-
 Route::get('/products', [ProductController::class, 'list'])->name('productList');
 Route::post('/products', [ProductController::class, 'list']);
 
@@ -33,8 +32,8 @@ Route::post('/products/new', [ProductController::class, 'save'])->name('saveProd
 /**
  * LOGIN ROUTES
  */
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/login', 'LoginController@login')->name('login');
-//Route::post('/login', 'LoginController@login')->name('login');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

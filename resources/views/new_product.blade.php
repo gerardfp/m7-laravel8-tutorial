@@ -1,6 +1,4 @@
-<!-- Dependiendo de si es Ajax o no, cargamos un layout con head y body o no-->
-@extends((Request::ajax()) ? 'layouts.ajax' : 'layouts.app')
-@section('content')
+<x-app-layout>
 <h1>Crear Productos</h1>
 <div class="card">
     <div class="card-body">
@@ -47,4 +45,4 @@
 </div>
 @endif
 @endif
-@endsection
+</x-app-layout>

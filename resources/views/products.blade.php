@@ -1,7 +1,4 @@
-<!-- Dependiendo de si es Ajax o no, cargamos un layout con head y body o no-->
-@extends((Request::ajax()) ? 'layouts.ajax' : 'layouts.app')
-
-@section('content')
+<x-app-layout>
 <h1>Lista de Productos</h1>
 <div class="row">
     @forelse ($productos as $prod)
@@ -75,4 +72,4 @@
     })
 </script>
 @endif
-@endsection
+</x-app-layout>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use App\Http\Requests\ProductListRequest;
 use App\Providers\UploadFileProvider;
 
@@ -31,14 +32,14 @@ class ProductController extends Controller
             $product->name = $request->input('name');
             $product->desc  = $request->input('desc');
             $product->price  = $request->input('price');
-            $product->type  = $request->input('type');
+            $product->category_id  = $request->input('category');
             //Save new product (can throw QueryException)
             $success = $product->save();
         } catch (UploadFileException $exception) {
             //$this->error = $exception->getMessage();
             $this->error = $exception->customMessage();
         } catch (\Illuminate\Database\QueryException $exception) {
-            $this->error = "Error con los datos introducidos";
+            $this->error = "Error con los datos introducidos: ".$exception->getMessage();
         }
         //Redirigimos a la pagina del formulario de nuevo producto pasandole el resultado de registro
         return redirect()->action([ProductController::class, 'new'], ['success' => $success])->withError($this->error);
@@ -64,17 +65,17 @@ class ProductController extends Controller
             $products->name($request->input('name'));
         }
 
-        if ($request->filled('type')) {
-            $products->type($request->input('type'));
+        if ($request->filled('category')) {
+            $products->category($request->input('category'));
         }
-        
+
         /**
          * USING JOIN in our table
          */
 
         //OPTION1: Using JOIN in the model
         $products->joinCategory();
-        
+
         //OPTION 2: Adding join to the query (same result)
         //$products->leftJoin('categories', 'products.category_id', '=', 'categories.id');;
 
@@ -88,7 +89,7 @@ class ProductController extends Controller
         //To work with API, we will return the data as json (no used for now)
         //if ($request->ajax()) return response()->json($list);
 
-        
+
         //AS is a result of two tables we have to select the elements to get from the query wuth ['products.*', 'categories.name as category']
         return view('products')->with('productos', $products->get(['products.*', 'categories.name as category']));
     }
@@ -96,7 +97,8 @@ class ProductController extends Controller
 
     public function new()
     {
-        return view('new_product');
+        $categories = Category::get();
+        return view('new_product')->with('categories',$categories);
     }
     public function addToChart(ProductListRequest $request)
     {

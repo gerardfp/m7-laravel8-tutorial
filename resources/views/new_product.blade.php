@@ -12,16 +12,18 @@
             </div>
             <div class="form-group">
                 <label for="price">Precio</label>
-                <input id="price" type="text" name="price" value="" class="form-control">
+                <input id="price" type="number" name="price" value="" class="form-control">
             </div>
             <div class="form-group">
                 <label for="desc">Descripcion</label>
                 <input id="desc" type="text" name="desc" value="" class="form-control">
             </div>
             <div class="form-group">
-                <select class="form-control" id="type" name="type">
-                    <option values="frutas">Frutas</option>
-                    <option value="verduras">Verduras</option>
+                <label for="desc">Categoria</label>
+                <select class="form-control" id="category" name="category">
+                @foreach ($categories as $cat)
+                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                @endforeach
                 </select>
             </div>
             <div class="form-group">

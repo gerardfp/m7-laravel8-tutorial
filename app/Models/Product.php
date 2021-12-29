@@ -21,9 +21,9 @@ class Product extends Model
     {
         return $query->where('price', '<', $input);
     }
-    public function scopeType($query, $input)
+    public function scopeCategory($query, $input)
     {
-        return $query->where('type', $input);
+        return $query->where('category_id', $input);
     }
     public function scopeName($query, $input)
     {
@@ -39,6 +39,7 @@ class Product extends Model
         $new->name = 'Pastel Richos Style';
         $new->desc  = 'chessecake';
         $new->price  = 40.20;
+        $new->category_id  = 1;
         $new->save();
     }
 }

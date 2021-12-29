@@ -17,7 +17,6 @@ class Products extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('desc');
-            $table->string('type');
             $table->float('price');
             $table->rememberToken();
             $table->timestamps();

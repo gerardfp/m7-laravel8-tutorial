@@ -27,7 +27,7 @@ class Product extends Model
     }
     public function scopeName($query, $input)
     {
-        return $query->where('name', $input);
+        return $query->where('products.name','like', '%'.$input.'%');
     }
     public function scopeJoinCategory($query)
     {

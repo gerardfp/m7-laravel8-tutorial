@@ -16,14 +16,15 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 
 
-Route::get('/products', [ProductController::class, 'list']);
+Route::get('/products', [ProductController::class, 'list'])->name('productList');
 Route::post('/products', [ProductController::class, 'list']);
 
 Route::post('/products/addToChart', [ProductController::class, 'addToChart'])->name('addToChart');
+Route::get('/products/emptyChart', [ProductController::class, 'emptyChart'])->name('emptyChart');
 Route::get('/products/new', [ProductController::class, 'new']);
 //Definimos la accion de save cuando se envia el formulario
 Route::post('/products/new', [ProductController::class, 'save'])->name('saveProduct');

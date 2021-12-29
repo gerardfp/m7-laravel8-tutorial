@@ -87,7 +87,7 @@
                             </ul>
                         </li>
                         @if(app('request')->session()->has('carrito'))
-                        <li class="nav-item"><a class="nav-link" type="button" value="Borrar Carrito" class="btn btn-primary"></a></li>
+                        <li class="nav-item"><a class="nav-link" type="button" class="btn btn-primary" href={{ route('emptyChart') }}>Borrar Carrito</a></li>
                         @endif
                     </ul>
                 </div>

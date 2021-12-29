@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-use App\Http\Requests\ProductListRequest;
-use App\Providers\UploadFileProvider;
 
+use Illuminate\Http\Request;
+use App\Http\Requests\ProductListRequest;
+
+use App\Providers\UploadFileProvider;
 use App\Exceptions\UploadFileException;
 
 class ProductController extends Controller
@@ -109,8 +111,9 @@ class ProductController extends Controller
         //Redirect to page who send the request:
         return redirect(url()->previous());
     }
-    public function removeToChart(ProductListRequest $request)
+    public function emptyChart(Request $request)
     {
-        //Hacer la función para borrar
+        $request->session()->forget('carrito');
+        return redirect()->route('welcome');
     }
 }

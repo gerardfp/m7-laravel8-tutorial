@@ -7,7 +7,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/products/') }}">Products Filter</a>
+                    <a href={{ route('productList') }}>Products Filter</a>
                     <a href="{{ url('/products/?axios=true') }}">Fiter Axios</a>
                     <a href="{{ url('/products/new') }}">New Product</a>
                 </div>

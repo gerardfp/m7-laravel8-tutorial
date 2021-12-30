@@ -7,10 +7,16 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <input id="name" type="text" name="name" value="" class="form-control">
+                @error('name')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="price">Precio</label>
                 <input id="price" type="number" name="price" value="" class="form-control">
+                @error('price')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="desc">Descripcion</label>

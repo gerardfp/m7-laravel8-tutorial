@@ -25,7 +25,22 @@ class ProductListRequest extends FormRequest
     public function rules()
     {
         return [
-           
+            'name' => 'required|unique:products|max:255',
+            'price' => 'required',
+        ];
+    }
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'Por favor define un nombre para el producto',
+            'name.unique' => 'Este producto ya existe en la base de datos',
+            'name.max' => 'Este producto ya existe en la base de datos',
+            'price.required' => 'El precio no puede estar vacio',
         ];
     }
     /**

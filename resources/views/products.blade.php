@@ -25,7 +25,7 @@
         <div class="card gx-5">
             <div class="card-body">
                 <h3>Filtrar Productos</h3>
-                <form id="filterForm" method="post" action={{ url('/products/') }}>
+                <form id="filterForm" method="post" action="/products">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="priceMin">Precio Min</label>

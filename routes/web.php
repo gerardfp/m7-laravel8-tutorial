@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 
 Route::get('/products', [ProductController::class, 'list'])->name('productList');
-Route::post('/products', [ProductController::class, 'list']);
+Route::post('/products', [ProductController::class, 'search'])->name('productSearch');
 
 Route::post('/products/addToChart', [ProductController::class, 'addToChart'])->name('addToChart');
 Route::get('/products/emptyChart', [ProductController::class, 'emptyChart'])->name('emptyChart');
@@ -36,4 +36,4 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

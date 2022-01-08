@@ -41,13 +41,13 @@ class ProductController extends Controller
             //$this->error = $exception->getMessage();
             $this->error = $exception->customMessage();
         } catch (\Illuminate\Database\QueryException $exception) {
-            $this->error = "Error con los datos introducidos: ".$exception->getMessage();
+            $this->error = "Error con los datos introducidos: " . $exception->getMessage();
         }
         //Redirigimos a la pagina del formulario de nuevo producto pasandole el resultado de registro
         return redirect()->action([ProductController::class, 'new'], ['success' => $success])->withError($this->error);
     }
 
-    public function list(ProductListRequest $request)
+    public function search(ProductListRequest $request)
     {
         //This option allow to keep the value in the view Form using:
         //{{old('priceMin')}}
@@ -95,12 +95,18 @@ class ProductController extends Controller
         //AS is a result of two tables we have to select the elements to get from the query wuth ['products.*', 'categories.name as category']
         return view('products')->with('productos', $products->get(['products.*', 'categories.name as category']));
     }
+    public function list()
+    {
+        $products = $this->product->query();
+        $products->joinCategory();
+        return view('products')->with('productos', $products->get(['products.*', 'categories.name as category']));
+    }
 
 
     public function new()
     {
         $categories = Category::get();
-        return view('new_product')->with('categories',$categories);
+        return view('new_product')->with('categories', $categories);
     }
     public function addToChart(ProductListRequest $request)
     {

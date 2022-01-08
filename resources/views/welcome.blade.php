@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
     <div class="content">
         <div class="title m-b-md">
             Laravel Demo
@@ -10,4 +10,4 @@
             <a href="{{ url('/products/new') }}">New Product</a>
         </div>
     </div>
-</x-app-layout>
+</x-guest-layout>
